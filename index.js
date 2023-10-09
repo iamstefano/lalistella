@@ -1,4 +1,5 @@
 import "./style.scss";
+import { Application } from "@splinetool/runtime";
 
 // t h e m e
 const colorThemes = document.querySelectorAll('[name="theme"]');
@@ -30,6 +31,12 @@ colorThemes.forEach((themeOption) => {
 
 document.onload = setTheme();
 
+//animation
+
+const canvas = document.getElementById("canvas3d");
+const appp = new Application(canvas);
+appp.load("https://prod.spline.design/lhPF2Aa9FVeoLRe4/scene.splinecode");
+
 // f i r e b a s e
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 
@@ -37,6 +44,8 @@ import {
   getDatabase,
   ref,
   push,
+  onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
 const appSettings = {
@@ -57,17 +66,64 @@ const appSettings = {
 };
  */
 // Initialize Firebase
-/* const app = initializeApp(firebaseConfig);
 
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const shoppingListInDB = ref(database, "shoppingList");
 
 const inputFieldEl = document.getElementById("input-field");
-const addButtonFieldEl = document.getElementById("add-button");
+const addButtonEl = document.getElementById("add-button");
+const shoppingListEl = document.getElementById("shopping-list");
 
 addButtonEl.addEventListener("click", function () {
   let inputValue = inputFieldEl.value;
 
-  console.log(inputValue);
-}); */
+  push(shoppingListInDB, inputValue);
+
+  clearInputFieldEl();
+});
+
+onValue(shoppingListInDB, function (snapshot) {
+  // Challenge: Change the onValue code so that it uses snapshot.exists() to show items when there are items in the database and if there are not displays the text 'No items here... yet'.
+
+  if (snapshot.exists()) {
+    let itemsArray = Object.entries(snapshot.val());
+
+    clearShoppingListEl();
+
+    for (let i = 0; i < itemsArray.length; i++) {
+      let currentItem = itemsArray[i];
+      let currentItemID = currentItem[0];
+      let currentItemValue = currentItem[1];
+
+      appendItemToShoppingListEl(currentItem);
+    }
+  } else {
+    shoppingListEl.innerHTML = "Non hai ancora aggiunto nulla!🤦🏻‍♂️ ";
+  }
+});
+
+function clearShoppingListEl() {
+  shoppingListEl.innerHTML = "";
+}
+
+function clearInputFieldEl() {
+  inputFieldEl.value = "";
+}
+
+function appendItemToShoppingListEl(item) {
+  let itemID = item[0];
+  let itemValue = item[1];
+
+  let newEl = document.createElement("li");
+
+  newEl.textContent = itemValue;
+
+  newEl.addEventListener("click", function () {
+    let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
+
+    remove(exactLocationOfItemInDB);
+  });
+
+  shoppingListEl.append(newEl);
+}

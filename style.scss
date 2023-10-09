@@ -13,12 +13,15 @@ body {
   line-height: 1.5;
   background: var(--clr-body-bg);
   color: var(--clr-text);
+  user-select: none;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1440px;
   margin: 30px auto;
 }
 
@@ -37,6 +40,12 @@ input {
   margin: 10px 0;
 }
 
+.list-form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
 #input-field {
   padding: 0.6em 1.3em;
   font-size: 20px;
@@ -44,7 +53,6 @@ input {
   border-radius: 0.4em;
   box-shadow: 0.1em 0.1em;
   outline: none;
-  text-transform: uppercase;
 }
 
 button {
@@ -69,11 +77,35 @@ button:active {
   box-shadow: 0.05em 0.05em;
 }
 
-h1,
-h2,
-h3 {
+h1 {
   color: var(--clr-heading);
   line-height: 1.1;
+  margin-bottom: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+ul li {
+  font-size: 20px;
+  background-color: #fffdf8;
+  padding: 15px;
+  flex-grow: 1;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.07em 0.07em;
+  text-align: center;
+}
+
+ul li:hover {
+  background-color: #ff9771b7;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -81,21 +113,6 @@ h3 {
   width: min(100% - 2rem, var(--max-width));
   margin-inline: auto;
 }
-
-/* .card {
-  padding: 1rem;
-  background-color: var(--clr-card-bg);
-  border-block-start: 0.5rem solid;
-  border-radius: 0.5rem;
-}
-
-.card > * {
-  margin: 0;
-}
-
-.card > *:not(:last-child) {
-  margin-bottom: 0.75rem;
-} */
 
 .visually-hidden {
   clip: rect(0 0 0 0);
@@ -107,11 +124,20 @@ h3 {
   width: 1px;
 }
 
+canvas {
+  display: block;
+  margin: 0;
+}
+
+.color-picker {
+  width: 320px;
+}
+
 .color-picker > fieldset {
-  border: 0;
   display: flex;
-  gap: 2rem;
-  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  gap: 1.7rem;
   background-image: linear-gradient(
     90deg,
     #53cbef 0%,
@@ -120,7 +146,7 @@ h3 {
     #53cbef 100%
   );
   animation: slidernbw 5s linear infinite;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem;
   margin-inline: auto;
   border-radius: 0 1rem 0 1rem;
   border: 3px solid black;
