@@ -50,9 +50,10 @@ input {
   padding: 0.6em 1.3em;
   font-size: 20px;
   border: 3px solid black;
-  border-radius: 0.4em;
-  box-shadow: 0.1em 0.1em;
+  border-radius: 0 1rem 0 1rem;
+  box-shadow: 0.1em 0.1em black;
   outline: none;
+  color: var(--clr-text);
 }
 
 button {
@@ -62,7 +63,7 @@ button {
   font-weight: 900;
   font-size: 18px;
   border: 3px solid black;
-  border-radius: 0.4em;
+  border-radius: 0 1rem 0 1rem;
   box-shadow: 0.1em 0.1em;
   text-align: center;
 }
@@ -93,18 +94,19 @@ ul {
 
 ul li {
   font-size: 20px;
-  background-color: #fffdf8;
+  background-color: var(--clr-card-bg);
   padding: 15px;
   flex-grow: 1;
   text-align: center;
   border: 3px solid black;
-  border-radius: 0.4em;
-  box-shadow: 0.07em 0.07em;
+  border-radius: 0 1rem 0 1rem;
+  box-shadow: 0.07em 0.07em black;
   text-align: center;
+  color: var(--clr-text);
 }
 
 ul li:hover {
-  background-color: #ff9771b7;
+  background-color: #71ffd0b7;
   cursor: pointer;
 }
 
@@ -191,56 +193,56 @@ canvas {
 
 .pink {
   --clr-body-bg: hsl(310 50% 90%);
-  --clr-card-bg: hsl(310 50% 100%);
+  --clr-card-bg: hsla(310, 50%, 25%, 0.349);
   --clr-text: hsl(310 50% 15%);
   --clr-heading: hsl(310 50% 25%);
 }
 
 .blue {
   --clr-body-bg: hsl(209 50% 90%);
-  --clr-card-bg: hsl(209 50% 100%);
+  --clr-card-bg: hsla(209, 48%, 48%, 0.767);
   --clr-text: hsl(209 50% 15%);
   --clr-heading: hsl(209 50% 25%);
 }
 
 .green {
   --clr-body-bg: hsl(109 50% 90%);
-  --clr-card-bg: hsl(109 50% 100%);
+  --clr-card-bg: hsla(109, 31%, 53%, 0.74);
   --clr-text: hsl(109 50% 15%);
   --clr-heading: hsl(109 50% 25%);
 }
 
 .dark {
-  --clr-body-bg: hsl(209 50% 10%);
-  --clr-card-bg: hsl(209 50% 5%);
-  --clr-text: hsl(209 50% 90%);
+  --clr-body-bg: hsl(208, 48%, 5%);
+  --clr-card-bg: hsla(208, 53%, 34%, 0.459);
+  --clr-text: hsl(209, 59%, 40%);
   --clr-heading: hsl(209 50% 80%);
 }
 
 :root:has(#pink:checked) {
   --clr-body-bg: hsl(310 50% 90%);
-  --clr-card-bg: hsl(310 50% 100%);
+  --clr-card-bg: hsla(310, 50%, 25%, 0.349);
   --clr-text: hsl(310 50% 15%);
   --clr-heading: hsl(310 50% 25%);
 }
 
 :root:has(#blue:checked) {
   --clr-body-bg: hsl(209 50% 90%);
-  --clr-card-bg: hsl(209 50% 100%);
+  --clr-card-bg: hsla(209, 48%, 48%, 0.767);
   --clr-text: hsl(209 50% 15%);
   --clr-heading: hsl(209 50% 25%);
 }
 
 :root:has(#green:checked) {
   --clr-body-bg: hsl(109 50% 90%);
-  --clr-card-bg: hsl(109 50% 100%);
+  --clr-card-bg: hsla(109, 31%, 53%, 0.74);
   --clr-text: hsl(109 50% 15%);
   --clr-heading: hsl(109 50% 25%);
 }
 
 :root:has(#dark:checked) {
   --clr-body-bg: hsl(209 50% 10%);
-  --clr-card-bg: hsl(209 50% 5%);
+  --clr-card-bg: hsla(208, 53%, 34%, 0.459);
   --clr-text: hsl(209 50% 90%);
   --clr-heading: hsl(209 50% 80%);
 }

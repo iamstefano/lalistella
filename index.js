@@ -31,7 +31,7 @@ colorThemes.forEach((themeOption) => {
 
 document.onload = setTheme();
 
-//animation
+// s p l i n e  animation
 
 const canvas = document.getElementById("canvas3d");
 const appp = new Application(canvas);
@@ -99,7 +99,7 @@ onValue(shoppingListInDB, function (snapshot) {
       appendItemToShoppingListEl(currentItem);
     }
   } else {
-    shoppingListEl.innerHTML = "Non hai ancora aggiunto nulla!🤦🏻‍♂️ ";
+    shoppingListEl.innerHTML = "Non hai ancora aggiunto nulla!💭 ";
   }
 });
 
