@@ -1,3 +1,8 @@
+@font-face {
+  font-family: MyFont;
+  src: url(assets/TAN-PEARL.ttf);
+}
+
 :root {
   --clr-body-bg: hsl(0 0% 90%);
   --clr-card-bg: hsl(0 0% 100%);
@@ -5,11 +10,13 @@
   --clr-heading: hsl(0 0% 25%);
 }
 
+$font-main: "MyFont", sans-serif;
+
 body {
+  font-family: $font-main;
   margin: 0;
   padding: 0;
-  font-family: system-ui, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.5;
   background: var(--clr-body-bg);
   color: var(--clr-text);
@@ -22,7 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 1440px;
-  margin: 30px auto;
+  margin: 12px auto;
 }
 
 img {
@@ -54,10 +61,11 @@ input {
   box-shadow: 0.1em 0.1em black;
   outline: none;
   color: var(--clr-text);
+  cursor: pointer;
 }
 
 button {
-  background: coral;
+  background: #f18666;
   font-family: inherit;
   padding: 1em 1.3em;
   font-weight: 900;
@@ -66,6 +74,8 @@ button {
   border-radius: 0 1rem 0 1rem;
   box-shadow: 0.1em 0.1em;
   text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 button:hover {
@@ -82,11 +92,13 @@ h1 {
   color: var(--clr-heading);
   line-height: 1.1;
   margin-bottom: 0;
+  /* margin-top: 20px; */
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -106,14 +118,8 @@ ul li {
 }
 
 ul li:hover {
-  background-color: #71ffd0b7;
+  background-color: #71ffd094;
   cursor: pointer;
-}
-
-.wrapper {
-  --max-width: 55rem;
-  width: min(100% - 2rem, var(--max-width));
-  margin-inline: auto;
 }
 
 .visually-hidden {
@@ -129,6 +135,7 @@ ul li:hover {
 canvas {
   display: block;
   margin: 0;
+  cursor: pointer;
 }
 
 .color-picker {
@@ -169,6 +176,7 @@ canvas {
   outline: 3px solid var(--radio-color, currentColor);
   outline-offset: 3px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .color-picker input[type="radio"]:checked {
@@ -182,7 +190,7 @@ canvas {
   --radio-color: pink;
 }
 .color-picker input[type="radio"]#blue {
-  --radio-color: blue;
+  --radio-color: hsl(209 50% 25%);
 }
 .color-picker input[type="radio"]#green {
   --radio-color: green;
@@ -200,49 +208,49 @@ canvas {
 
 .blue {
   --clr-body-bg: hsl(209 50% 90%);
-  --clr-card-bg: hsla(209, 48%, 48%, 0.767);
+  --clr-card-bg: hsla(209, 25%, 58%, 0.767);
   --clr-text: hsl(209 50% 15%);
   --clr-heading: hsl(209 50% 25%);
 }
 
 .green {
   --clr-body-bg: hsl(109 50% 90%);
-  --clr-card-bg: hsla(109, 31%, 53%, 0.74);
+  --clr-card-bg: hsla(109, 31%, 53%, 0.527);
   --clr-text: hsl(109 50% 15%);
   --clr-heading: hsl(109 50% 25%);
 }
 
 .dark {
   --clr-body-bg: hsl(208, 48%, 5%);
-  --clr-card-bg: hsla(208, 53%, 34%, 0.459);
-  --clr-text: hsl(209, 59%, 40%);
+  --clr-card-bg: hsl(208, 53%, 34%, 0.459);
+  --clr-text: hsl(209, 57%, 29%);
   --clr-heading: hsl(209 50% 80%);
 }
 
 :root:has(#pink:checked) {
   --clr-body-bg: hsl(310 50% 90%);
-  --clr-card-bg: hsla(310, 50%, 25%, 0.349);
+  --clr-card-bg: hsl(310, 50%, 25%, 0.349);
   --clr-text: hsl(310 50% 15%);
   --clr-heading: hsl(310 50% 25%);
 }
 
 :root:has(#blue:checked) {
   --clr-body-bg: hsl(209 50% 90%);
-  --clr-card-bg: hsla(209, 48%, 48%, 0.767);
+  --clr-card-bg: hsla(209, 25%, 58%, 0.767);
   --clr-text: hsl(209 50% 15%);
   --clr-heading: hsl(209 50% 25%);
 }
 
 :root:has(#green:checked) {
   --clr-body-bg: hsl(109 50% 90%);
-  --clr-card-bg: hsla(109, 31%, 53%, 0.74);
+  --clr-card-bg: hsla(109, 31%, 53%, 0.527);
   --clr-text: hsl(109 50% 15%);
   --clr-heading: hsl(109 50% 25%);
 }
 
 :root:has(#dark:checked) {
-  --clr-body-bg: hsl(209 50% 10%);
-  --clr-card-bg: hsla(208, 53%, 34%, 0.459);
-  --clr-text: hsl(209 50% 90%);
-  --clr-heading: hsl(209 50% 80%);
+  --clr-body-bg: hsl(210, 11%, 7%);
+  --clr-card-bg: hsla(208, 30%, 50%, 0.37);
+  --clr-text: hsl(209, 43%, 90%);
+  --clr-heading: hsl(209, 62%, 85%);
 }

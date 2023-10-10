@@ -99,7 +99,7 @@ onValue(shoppingListInDB, function (snapshot) {
       appendItemToShoppingListEl(currentItem);
     }
   } else {
-    shoppingListEl.innerHTML = "Non hai ancora aggiunto nulla!💭 ";
+    shoppingListEl.innerHTML = "Qui non c'è ancora nulla!💭";
   }
 });
 
