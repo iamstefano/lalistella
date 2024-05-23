@@ -1,5 +1,14 @@
 import "./style.scss";
 import { Application } from "@splinetool/runtime";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+  remove,
+} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
 // t h e m e
 const colorThemes = document.querySelectorAll('[name="theme"]');
@@ -38,15 +47,6 @@ const appp = new Application(canvas);
 appp.load("https://prod.spline.design/lhPF2Aa9FVeoLRe4/scene.splinecode");
 
 // f i r e b a s e
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-
-import {
-  getDatabase,
-  ref,
-  push,
-  onValue,
-  remove,
-} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
 const appSettings = {
   databaseURL:
@@ -70,8 +70,6 @@ addButtonEl.addEventListener("click", function () {
 });
 
 onValue(shoppingListInDB, function (snapshot) {
-  // Challenge: Change the onValue code so that it uses snapshot.exists() to show items when there are items in the database and if there are not displays the text 'No items here... yet'.
-
   if (snapshot.exists()) {
     let itemsArray = Object.entries(snapshot.val());
 
