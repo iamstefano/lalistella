@@ -1,58 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it" class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Listella</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="style.scss" />
+    <meta name="theme-color" content="#f6f2e9" />
+    <meta name="description" content="La tua lista personale, semplice e sempre a portata di mano." />
+    <title>La Listella — La tua lista di cose da fare</title>
   </head>
   <body>
     <div class="container">
-      <form class="color-picker" action="">
+      <header class="top-bar">
+        <a class="brand" href="/" aria-label="La Listella, pagina iniziale">✳ La Listella</a>
+        <form class="color-picker" aria-label="Scegli il tema">
         <fieldset>
-          <legend class="visually-hidden">Pick a color scheme</legend>
-          <label for="light" class="visually-hidden">Light</label>
-          <input type="radio" name="theme" id="light" checked />
-
-          <label for="pink" class="visually-hidden">Pink theme</label>
-          <input type="radio" id="pink" name="theme" />
-
-          <label for="blue" class="visually-hidden">Blue theme</label>
-          <input type="radio" id="blue" name="theme" />
-
-          <label for="green" class="visually-hidden">Green theme</label>
-          <input type="radio" id="green" name="theme" />
-
-          <label for="dark" class="visually-hidden">Dark theme</label>
-          <input type="radio" id="dark" name="theme" />
+          <legend class="visually-hidden">Scegli un tema colore</legend>
+          <label class="theme-option" title="Tema chiaro"><input type="radio" name="theme" id="light" aria-label="Tema chiaro" /></label>
+          <label class="theme-option" title="Tema rosa"><input type="radio" name="theme" id="pink" aria-label="Tema rosa" /></label>
+          <label class="theme-option" title="Tema blu"><input type="radio" name="theme" id="blue" aria-label="Tema blu" /></label>
+          <label class="theme-option" title="Tema verde"><input type="radio" name="theme" id="green" aria-label="Tema verde" /></label>
+          <label class="theme-option" title="Tema scuro"><input type="radio" name="theme" id="dark" aria-label="Tema scuro" /></label>
         </fieldset>
-      </form>
-      <h1>LA LISTELLA</h1>
-      <!-- <img src="assets/cat.png" /> -->
-      <canvas id="canvas3d"></canvas>
-      <form class="list-form">
-        <input type="text" id="input-field" placeholder="Es. Misticanza" />
-        <button id="add-button">🖊️🛒</button>
-      </form>
-      <ul id="shopping-list"></ul>
+        </form>
+      </header>
+
+      <main class="list-card">
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">UN PASSO ALLA VOLTA</p>
+            <h1 id="page-title">Fai spazio alle<br /><span>cose importanti.</span></h1>
+            <p class="subtitle">Una lista leggera per tenere a mente quello che conta.</p>
+          </div>
+          <div class="spline-scene" aria-hidden="true">
+            <canvas id="canvas3d"></canvas>
+            <span class="scene-fallback">✳</span>
+            <span class="scene-caption">UN TOCCO DI LEGGEREZZA</span>
+          </div>
+        </section>
+
+        <form class="list-form">
+          <label class="visually-hidden" for="input-field">Nuova attività</label>
+          <input type="text" id="input-field" maxlength="120" placeholder="Aggiungi alla lista…" autocomplete="off" />
+          <button id="add-button" type="submit"><span aria-hidden="true">+</span> Aggiungi</button>
+        </form>
+
+        <section class="list-section" aria-label="Le tue attività">
+          <div class="list-heading">
+            <h2>La tua lista</h2>
+            <p id="task-count" aria-live="polite"></p>
+          </div>
+          <div class="list-toolbar">
+            <div class="filters" role="group" aria-label="Filtra attività">
+              <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">Tutte</button>
+              <button type="button" class="filter-button" data-filter="active" aria-pressed="false">Da fare</button>
+              <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">Fatte</button>
+            </div>
+            <button type="button" id="clear-completed" class="text-button" disabled>Rimuovi completate</button>
+          </div>
+          <ul id="shopping-list" aria-live="polite" aria-relevant="additions removals"></ul>
+          <p id="feedback" class="feedback" aria-live="polite">Le attività restano salvate su questo dispositivo.</p>
+        </section>
+      </main>
+      <footer class="footer-note">Privata per design · i tuoi dati restano su questo dispositivo</footer>
     </div>
-    <!-- Import maps polyfill -->
-    <!-- Remove this when import maps will be widely supported -->
-    <script
-      async
-      src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
-    ></script>
-    <script type="importmap">
-      {
-        "imports": {
-          "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.474/build/runtime.js"
-        }
-      }
-    </script>
     <script src="/index.js" type="module"></script>
   </body>
 </html>
